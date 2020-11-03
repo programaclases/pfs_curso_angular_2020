@@ -11,6 +11,7 @@ import { MenuComponent } from './components/menu/menu.component';
 import { OtromenuComponent } from './components/otromenu/otromenu.component';
 import { LoginComponent } from './pages/login/login.component';
 import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.component';
+import { ModalComponent } from './components/modal/modal.component';
 
 
 @NgModule({
@@ -23,6 +24,7 @@ import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.com
     OtromenuComponent,
     LoginComponent,
     PageNotFoundComponent,
+    ModalComponent,
 
   ],
   imports: [

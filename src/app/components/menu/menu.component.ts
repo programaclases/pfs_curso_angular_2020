@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { ModalComponent } from './../modal/modal.component';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { LoginService } from 'src/app/services/login.service';
 
 
@@ -9,6 +10,8 @@ import { LoginService } from 'src/app/services/login.service';
 })
 export class MenuComponent implements OnInit {
 
+  @ViewChild('myModal') mymodal: ModalComponent = new ModalComponent();
+
 
   public logueado: boolean = false;
   public userName: string = 'Usuario';
@@ -18,7 +21,8 @@ export class MenuComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    
+    // const headers = new HttpHeaders();
+    // headers.append('Content-Type', 'application/json');
 
     this.LoginService.changeMenu.subscribe( resp => {
       if (resp === undefined ) {
@@ -31,6 +35,10 @@ export class MenuComponent implements OnInit {
     });
 
     this.LoginService.comprobarEstado();
+  }
+
+  logOut() {
+    this.mymodal.abrirModal();
   }
 
 }

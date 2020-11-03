@@ -32,7 +32,7 @@
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown" style="left: -60px;">
               <a class="dropdown-item"><i class="fa fa-user" aria-hidden="true"></i> Perfil</a>
-              <a class="dropdown-item">
+              <a class="dropdown-item" (click)="logOut()">
                   <i class="fa fa-sign-out" aria-hidden="true"></i> Logout</a>
             <!--   <div class="dropdown-divider"></div> -->
            
@@ -41,3 +41,5 @@
       </ul>
     </div>
   </nav>
+
+  <app-modal #myModal></app-modal>
