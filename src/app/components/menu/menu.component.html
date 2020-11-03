@@ -42,4 +42,9 @@
     </div>
   </nav>
 
-  <app-modal #myModal></app-modal>
+  <app-modal #myModal 
+  [title]="myTitle" 
+  [description]="myDescription" 
+  (enviarLogin)="recogerEstadoLogin($event)"
+
+  ></app-modal>

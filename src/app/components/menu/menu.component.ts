@@ -12,7 +12,8 @@ export class MenuComponent implements OnInit {
 
   @ViewChild('myModal') mymodal: ModalComponent = new ModalComponent();
 
-
+  public myTitle = 'Para salir del login';
+  public myDescription = 'Modal para salir del login';
   public logueado: boolean = false;
   public userName: string = 'Usuario';
   constructor(
@@ -37,8 +38,16 @@ export class MenuComponent implements OnInit {
     this.LoginService.comprobarEstado();
   }
 
-  logOut() {
+  logOut(): void {
     this.mymodal.abrirModal();
   }
 
+  recogerEstadoLogin( event: boolean ): void {
+    console.log('recoger login', event);
+    if ( event ) {
+      this.logueado = false;
+      this.LoginService.borrarLogin();
+    }
+
+  }
 }

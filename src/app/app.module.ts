@@ -12,6 +12,8 @@ import { OtromenuComponent } from './components/otromenu/otromenu.component';
 import { LoginComponent } from './pages/login/login.component';
 import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.component';
 import { ModalComponent } from './components/modal/modal.component';
+import { HttpClientModule } from '@angular/common/http';
+
 
 
 @NgModule({
@@ -31,6 +33,7 @@ import { ModalComponent } from './components/modal/modal.component';
     BrowserModule,
     FormsModule,
     ReactiveFormsModule,
+    HttpClientModule,
     AppRoutingModule
   ],
   providers: [],
