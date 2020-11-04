@@ -1,8 +1,10 @@
+import { ModalComponent } from './../../../components/modal/modal.component';
 // import { UsuariosService } from './../../../services/usuarios.service';
 import { UsuariosService } from 'src/app/services/usuarios.service';
 
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import {  Subscription } from 'rxjs';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-listar-usarios',
@@ -11,6 +13,11 @@ import {  Subscription } from 'rxjs';
 })
 
 export class ListarUsariosComponent implements OnInit, OnDestroy {
+
+  @ViewChild('modalUser',{static: false}) modalUser = new ModalComponent();
+
+  public myTitle = 'Borrar usuario';
+  public myDescription = 'Esta seguro que quiere eliminar este registro';
 
 
   public subscripcion: Subscription;
@@ -21,8 +28,12 @@ export class ListarUsariosComponent implements OnInit, OnDestroy {
     { label: 'Role' },
     { label: 'Opciones' },
   ];
+  reserva: any;
 
-  constructor( private usuariosService: UsuariosService) { }
+  constructor(
+    private usuariosService: UsuariosService,
+    private route: Router
+    ) { }
 
 
   ngOnInit(): void {
@@ -32,7 +43,12 @@ export class ListarUsariosComponent implements OnInit, OnDestroy {
     } ); */
     this.listaUsuarios();
   }
+  ngOnDestroy(): void {
+    // para desescrirbirse
+    console.log('unsubscribe');
 
+    // this.subscripcion.unsubscribe();
+  }
   listaUsuarios(): void {
     this.usuariosService.listUsers().toPromise()
     .then( usuarios => {
@@ -44,11 +60,26 @@ export class ListarUsariosComponent implements OnInit, OnDestroy {
     });
   }
 
-  ngOnDestroy(): void {
-    // para desescrirbirse
-    console.log('unsubscribe');
+ 
 
-    // this.subscripcion.unsubscribe();
+  crearUsuario(): void {
+    this.route.navigate(['usuarios/crear']);
   }
+
+  editarUsuario(id): void {
+    this.route.navigate(['usuarios/edit' + id  ]);
+  }
+
+  deleteUsuario(id): void {
+  
+    this.usuariosService.deleteUsers(id).toPromise()
+      .then( resp => {
+        console.log('resp', resp);
+        this.listaUsuarios();
+      }).catch( error => {
+        console.log('error', error);
+      });
+  }
+
 
 }

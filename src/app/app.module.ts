@@ -11,8 +11,8 @@ import { MenuComponent } from './components/menu/menu.component';
 import { OtromenuComponent } from './components/otromenu/otromenu.component';
 import { LoginComponent } from './pages/login/login.component';
 import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.component';
-import { ModalComponent } from './components/modal/modal.component';
 import { HttpClientModule } from '@angular/common/http';
+import { GeneralModule } from './components/general/general/general.module';
 
 
 
@@ -26,7 +26,7 @@ import { HttpClientModule } from '@angular/common/http';
     OtromenuComponent,
     LoginComponent,
     PageNotFoundComponent,
-    ModalComponent,
+
 
   ],
   imports: [
@@ -34,6 +34,7 @@ import { HttpClientModule } from '@angular/common/http';
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
+    GeneralModule,
     AppRoutingModule
   ],
   providers: [],

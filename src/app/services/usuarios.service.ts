@@ -21,4 +21,9 @@ export class UsuariosService {
     } ));
   }
 
+  deleteUsers( id: string ): Observable<any> {
+    const otraUrl = this.myUrl + 'users/delete/' + id;
+    return this.http.delete( otraUrl );
+  }
+
 }

@@ -1,3 +1,4 @@
+import { GeneralModule } from './../../components/general/general/general.module';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ListarUsariosComponent } from './listar-usarios/listar-usarios.component';
@@ -6,9 +7,13 @@ import { UsuarioRoutingModule } from './usuario.routes';
 
 
 @NgModule({
-  declarations: [ListarUsariosComponent],
+  declarations: [
+    ListarUsariosComponent,
+
+  ],
   imports: [
     CommonModule,
+    GeneralModule,
     UsuarioRoutingModule,
   ]
 })

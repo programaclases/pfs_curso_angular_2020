@@ -12,7 +12,9 @@ export class ModalComponent implements OnInit {
 
   @Input() title: string = '';
   @Input() description: string = '';
+  @Input() id: string = '';
   @Output() enviarLogin = new EventEmitter();
+  @Output() enviarId = new EventEmitter();
 
   constructor() { }
 
@@ -30,6 +32,7 @@ export class ModalComponent implements OnInit {
   cerrarModal( value: boolean ) {
 
     this.enviarLogin.emit( value );
+    this.enviarId.emit( this.id );
     $('#myModal').modal('hide');
   }
 }
