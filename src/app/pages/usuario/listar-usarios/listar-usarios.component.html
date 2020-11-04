@@ -1,0 +1,29 @@
+<div class="container" style="margin-top: 20px;">
+  <!--   {{listUsers | json}}  ver cobtenido de una variable-->
+    
+    <table class="table">
+        <thead class="thead-dark" >
+          <tr >
+            <th *ngFor="let header of listHeader" scope="col">{{ header.label }}</th>        
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let user of listUsers">
+    
+            <td>{{user.nombre }}</td>
+            <td>{{user.email }}</td>
+            <td>{{user.role }}</td>
+            <td>
+                <button type="button" class="btn btn-warning"><i class="fa fa-pencil" aria-hidden="true"></i></button>
+                <button type="button" class="btn btn-danger" style="margin-left: 10px;"><i class="fa fa-trash" aria-hidden="true"></i>
+                </button>
+            </td>
+          </tr>
+        
+         
+        </tbody>
+      </table>
+      
+
+
+</div>

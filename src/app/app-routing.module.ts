@@ -15,6 +15,7 @@ const routes: Routes = [
   { path: 'promesas', component: PromesasComponent },
   { path: 'obs', component: ObservablesComponent },
   { path: 'login', component: LoginComponent },
+  { path: 'usuario', loadChildren: () => import('./pages/usuario/usuario.module').then(m => m.UsuarioModule) },
   { path: '**', component: PageNotFoundComponent }
 ];
 
