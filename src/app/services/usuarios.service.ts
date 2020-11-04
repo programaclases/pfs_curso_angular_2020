@@ -21,6 +21,20 @@ export class UsuariosService {
     } ));
   }
 
+  getUser(id): Observable<any> {
+    const otraUrl = this.myUrl + 'users/usuario/' +id ;
+    return this.http.get( otraUrl );
+  }
+
+  createUser( user ): Observable<any> {
+    const otraUrl = this.myUrl + 'users/crear/';
+    return this.http.post( otraUrl , user );
+  }
+  updateUser( user: any ): Observable<any> {
+    const otraUrl = this.myUrl + 'users/update/' + user.id;
+    return this.http.put( otraUrl , user );
+  }
+
   deleteUsers( id: string ): Observable<any> {
     const otraUrl = this.myUrl + 'users/delete/' + id;
     return this.http.delete( otraUrl );

@@ -43,12 +43,16 @@ export class ListarUsariosComponent implements OnInit, OnDestroy {
     } ); */
     this.listaUsuarios();
   }
+
+
   ngOnDestroy(): void {
     // para desescrirbirse
     console.log('unsubscribe');
 
     // this.subscripcion.unsubscribe();
   }
+
+
   listaUsuarios(): void {
     this.usuariosService.listUsers().toPromise()
     .then( usuarios => {
@@ -63,11 +67,11 @@ export class ListarUsariosComponent implements OnInit, OnDestroy {
  
 
   crearUsuario(): void {
-    this.route.navigate(['usuarios/crear']);
+    this.route.navigate(['usuario/crear']);
   }
 
   editarUsuario(id): void {
-    this.route.navigate(['usuarios/edit' + id  ]);
+    this.route.navigate(['usuario/edit/' + id  ]);
   }
 
   deleteUsuario(id): void {
