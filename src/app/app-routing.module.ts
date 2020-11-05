@@ -5,6 +5,7 @@ import { HomeComponent } from './pages/home/home.component';
 import { PromesasComponent } from './pages/promesas/promesas.component';
 import { LoginComponent } from 'src/app/pages/login/login.component';
 import { PageNotFoundComponent } from 'src/app/pages/page-not-found/page-not-found.component';
+import { AuthGuardGuard } from './services/auth-guard.guard';
 
 
 
@@ -15,7 +16,8 @@ const routes: Routes = [
   { path: 'promesas', component: PromesasComponent },
   { path: 'obs', component: ObservablesComponent },
   { path: 'login', component: LoginComponent },
-  { path: 'usuario', loadChildren: () => import('./pages/usuario/usuario.module').then(m => m.UsuarioModule) },
+  { path: 'usuario', canActivate: [ AuthGuardGuard ],
+  loadChildren: () => import('./pages/usuario/usuario.module').then(m => m.UsuarioModule) },
   { path: '**', component: PageNotFoundComponent }
 ];
 

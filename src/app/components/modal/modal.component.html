@@ -1,4 +1,4 @@
-<div class="modal" tabindex="-1" id="myModal">
+<div class="modal" tabindex="-1" id="myModal"  *ngIf="closeModal">
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
@@ -13,8 +13,9 @@
         </div>
         <div class="modal-footer">
             <!-- data-dismiss="modal" -->
+            <!-- class="btn btn-primary"  -->
           <button type="button" class="btn btn-secondary"  (click)="cerrarModal(false)">Close</button>
-          <button type="button" class="btn btn-primary"  (click)="cerrarModal(true)">Salir</button>
+          <button type="button"  [class]="clase_button" (click)="cerrarModal(true)">Salir</button>
         </div>
       </div>
     </div>

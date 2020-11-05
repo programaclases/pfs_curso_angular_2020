@@ -28,7 +28,9 @@ export class ListarUsariosComponent implements OnInit, OnDestroy {
     { label: 'Role' },
     { label: 'Opciones' },
   ];
-  reserva: any;
+  public reserva: string = '';
+
+  public clase_button = 'btn btn-success';
 
   constructor(
     private usuariosService: UsuariosService,
@@ -75,15 +77,18 @@ export class ListarUsariosComponent implements OnInit, OnDestroy {
   }
 
   deleteUsuario(id): void {
-  
-    this.usuariosService.deleteUsers(id).toPromise()
-      .then( resp => {
-        console.log('resp', resp);
-        this.listaUsuarios();
-      }).catch( error => {
-        console.log('error', error);
-      });
-  }
+    this.reserva = id;
+    this.modalUser.abrirModal();
 
+  }
+  recogerDelete( event) {
+    this.usuariosService.deleteUsers(this.reserva ).toPromise()
+    .then( resp => {
+      console.log('resp', resp);
+      this.listaUsuarios();
+    }).catch( error => {
+      console.log('error', error);
+    });
+  }
 
 }

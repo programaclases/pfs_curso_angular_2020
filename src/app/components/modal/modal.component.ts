@@ -6,33 +6,35 @@ declare const Jquery: any;
 @Component({
   selector: 'app-modal',
   templateUrl: './modal.component.html',
-  styleUrls: ['./modal.component.scss']
+  styleUrls: ['./modal.component.scss'],
 })
 export class ModalComponent implements OnInit {
-
   @Input() title: string = '';
   @Input() description: string = '';
   @Input() id: string = '';
+  @Input() clase_button: string = 'btn btn-primary';
   @Output() enviarLogin = new EventEmitter();
   @Output() enviarId = new EventEmitter();
 
-  constructor() { }
+  public closeModal = false;
 
-  ngOnInit(): void {
-  }
+  constructor() {}
 
+  ngOnInit(): void {}
 
   abrirModal() {
-    console.log('debería abrirse el modal');
-    $('#myModal').modal('show');
-    $('#myInput').trigger('focus');
-
+    this.closeModal = false;
+    this.closeModal = true;
+    setTimeout(() => {
+      console.log('debería abrirse el modal');
+      $('#myModal').modal('show');
+      $('#myInput').trigger('focus');
+    }, 500);
   }
 
-  cerrarModal( value: boolean ) {
-
-    this.enviarLogin.emit( value );
-    this.enviarId.emit( this.id );
+  cerrarModal(value: boolean) {
+    this.enviarLogin.emit(value);
+    this.enviarId.emit(this.id);
     $('#myModal').modal('hide');
   }
 }
